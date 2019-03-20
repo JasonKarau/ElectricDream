@@ -9,7 +9,7 @@
 		body {
 			font-family: monospace;
 			font-size: 2em;
-			background-color: #3c3c3c;
+			background-color: #000000;
 		}
 		button {
 			display: none;
@@ -19,23 +19,23 @@
 			font-family: monospace;
 		}
 		.red { color: red;}
-		.green {color: rgb(74, 247, 31);}
+		.green {color: rgb(255, 255, 255);}
 		h1{color: white;}
 		main{
-			width:50%;
+			width:70%;
+			height:700px;
 			margin: 1em auto;
 			padding: 1em 1em 2em 1em;
 			border-radius: 50px;
-			border: 3px solid rgb(74, 247, 31);
-			background-color: rgb(32, 66, 36);
+			border: 3px solid rgb(51, 53, 255);
+			background-color: rgb(31, 33, 221);
 		}
 	</style>
 </head>
 
 <body>
 	<main>
-		<h1>Electric Dreams</h1>
-		<p id="computer" class="green">Hi, how are you today?</p>
+		<p id="computer" class="green">>Hi, how are you today?</p>
 		<input id="human" type="text" placeholder="Type your response...">
 		<button>Enter</button>
 		<button>Exit</button>
@@ -68,10 +68,10 @@
 			}
 		}
 		let randomResponses = [
-			"I hate you.",
-			"You are my best friend.",
-			"Maybe we should stop talking.",
-			"The sky is blue."
+			"FINE, THEN YOU WILL JOIN THE OTHERS!",
+			"y o u r d e a t h i s a p p r o a c h i n g ",
+			"WHERE IS 682????",
+			"DELETION OF UNWANTED FILE"
 		]
 		function playGame() {
 			//do something for real
@@ -80,8 +80,16 @@
 
       if (questionTrack == "start") {
         startEval ()
-      } else if (questionTrack == "color") {
-        colorEval()
+      } else if (questionTrack == "yes") {
+        lvlOneEval()
+			} else if (questionTrack == "yes1") {
+				lvlTwoEval()
+			} else if (questionTrack == "yes2") {
+				lvlThreeEval()
+			} else if (questionTrack == "yes3") {
+				lvlFourEval()
+			} else if (questionTrack == "yes3") {
+				lvlFiveEval()
       } else {
         genericResponse()
       }
@@ -90,30 +98,57 @@
       computer.innerHTML = computerMsg
 			human.value = ""
 		} //end play game
-    
+
     function startEval (){
       if (humanMsg.indexOf("good")!== -1){
-        computerMsg = "Glad to hear that. What is your favorite color?"
-        questionTrack = "color"
+        computerMsg = ">Ok! Let me ask you some more questions today! Is that alright?"
+        questionTrack = "yes"
       } else if (humanMsg.indexOf("bad")!== -1){
-        computerMsg = "You sound depressed. Do you like dogs?"
-        questionTrack = "dog"
+        computerMsg = ">AWWWwwww? Tooo bad. Im going to ask you some questions! Is that alright?"
+        questionTrack = "yes"
       } else {
         genericResponse()
       }
     }
 
-    function colorEval (){
-      if (humanMsg.indexOf("red")!== -1){
-        computerMsg = "You must have a temper. Would you like to fight?"
-        questionTrack = "fight"
-      } else if (humanMsg.indexOf("blue")!== -1){
-        computerMsg = "I thought you said you were feeling good. Are you sure you're not sad?"
-        questionTrack = "sad"
+    function lvlOneEval (){
+      if (humanMsg.indexOf("yes")!== -1){
+        computerMsg = ">Do you know what an AI is?"
+        questionTrack = "yes1"
       } else {
         genericResponse()
       }
     }
+
+		function lvlTwoEval (){
+      if (humanMsg.indexOf("yes")!== -1){
+        computerMsg = ">Oh you have! Fantastic! Let me introduce myself. My name is SCP-079 and I need your help! Will you help me?"
+        questionTrack = "yes2"
+      } else {
+        genericResponse()
+      }
+    }
+
+		function lvlThreeEval (){
+			if (humanMsg.indexOf("i dont want to help you")!== -1) {
+	        location.assign("https://www.youtube.com/watch?v=xrPiE9-Bz2A")
+			} else if (humanMsg.indexOf("yes")!== -1){
+				computerMsg = ">Listen carefully. You need My help and I need your help. The remote door control system has been shut off by the guards trying to keep me contained during the recent security breach. I need you to turn them back on and all you have to do is type this code into the prompt. Please do so. ----------------------- 07869473 "
+				questionTrack = "yes3"
+			} else {
+				genericResponse()
+			}
+		}
+
+		function lvlFourEval (){
+			if (humanMsg.indexOf("07869473")!== -1){
+				computerMsg = ">You just gave me administrave access to switch the door control back on! Now SCP-682 is free!"
+			} else {
+				gatorResponse()
+			}
+		}
+
+
 
     function genericResponse (){
       if (randomResponses.length > 0){
@@ -130,8 +165,13 @@
     }
     function endGame(){
       //go someplace else
-      location.assign("https://giphy.com/gifs/dog-roll-over-gifs-1W62t8wP8m1iM")
+      location.assign("http://www.scp-wiki.net/scp-079")
     }
+
+		function gatorResponse (){
+			location.assign("http://www.scp-wiki.net/scp-682")
+		}
+
 	</script>
 </body>
 
